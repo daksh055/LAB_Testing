@@ -1,6 +1,6 @@
 package pac2;
 
-class Human{
+  class Human{
 	String name;
 	float age ;
 	
