@@ -1,4 +1,6 @@
 package pac2;
+import java.util.Scanner;
+
 
   class Human{
 	String name;
@@ -8,18 +10,19 @@ package pac2;
 		this.name=name;
 		
 	}
-	
 
 	
 		// TODO Auto-generated constructor stub
 	
 
 
-	public String getName() {
-		return name;
+	public void getName() {
+		System.out.println("");
 	}
 
 	public void setName(String name) {
+		Scanner sc = new Scanner(System.in);
+		 name = sc.nextLine();
 		this.name = name;
 	}
 
@@ -94,10 +97,11 @@ class Account extends Human{
 public class lab2_1 {
 
 	public static void main(String[] args) {
-		Account ac = new Account("daksdh",12345678,2000);
-//		ac.accHolder
+		Account ac = new Account("daksh",12345678,2000);
+		
 		ac.deposit(2000);
 		ac.getbalance();
+		
 		
 		// TODO Auto-generated method stub
 
