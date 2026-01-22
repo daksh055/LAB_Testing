@@ -1,4 +1,4 @@
-package pac2;
+package COREJAVA;
 class base
 {
 	public void basemethod()

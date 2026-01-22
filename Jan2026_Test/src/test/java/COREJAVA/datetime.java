@@ -1,4 +1,4 @@
-package pac2;
+package COREJAVA;
 //package Pack1;
 
 import java.time.Instant;

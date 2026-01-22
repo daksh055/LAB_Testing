@@ -1,4 +1,4 @@
-package pac2;
+package COREJAVA;
 import java.util.Arrays;
 import java.util.Scanner;
 

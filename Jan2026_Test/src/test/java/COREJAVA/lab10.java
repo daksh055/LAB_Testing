@@ -1,4 +1,4 @@
-package pac2;
+package COREJAVA;
 
 public class lab10 {
 	public static boolean StringIsPositive(String str) {

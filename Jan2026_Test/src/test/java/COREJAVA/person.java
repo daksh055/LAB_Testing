@@ -1,4 +1,4 @@
-package pac2;
+package COREJAVA;
 
 public class person {
 	private String Firstname;

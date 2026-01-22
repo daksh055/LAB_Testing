@@ -1,4 +1,4 @@
-package pac2;
+package COREJAVA;
 import java.io.*;
 
 public class lab4_2 {

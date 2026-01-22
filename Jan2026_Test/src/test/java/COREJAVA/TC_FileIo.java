@@ -1,4 +1,4 @@
-package pac2;
+package COREJAVA;
 import java.io.FileInputStream;
 import java.io.IOException;
 

@@ -1,4 +1,4 @@
-package pac2;
+package COREJAVA;
 import java.util.Scanner;
 public class lab7 {
 	private String Firstname;

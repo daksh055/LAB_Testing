@@ -1,4 +1,4 @@
-package pac2;
+package COREJAVA;
 
 public class lab6 {
 
