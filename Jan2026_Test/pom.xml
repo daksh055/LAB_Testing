@@ -1,60 +1,115 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
  
   <groupId>com.testing</groupId>
   <artifactId>Mavetest</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
- 
   <name>Mavetest</name>
   <url>http://maven.apache.org</url>
  
+  <!-- ========= -->
+  <!-- Settings  -->
+  <!-- ========= -->
   <properties>
+    <!-- Use the Java version you compile with -->
+    <maven.compiler.source>11</maven.compiler.source>
+    <maven.compiler.target>11</maven.compiler.target>
+ 
+    <!-- Make builds consistent across OS -->
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
+ 
+    <!-- Centralize versions -->
+    <testng.version>7.10.2</testng.version>
+    <selenium.version>4.39.0</selenium.version>
+    <webdrivermanager.version>6.3.3</webdrivermanager.version>
+    <maven.surefire.version>3.2.5</maven.surefire.version>
   </properties>
  
+  <!-- ============== -->
+  <!--   Dependencies -->
+  <!-- ============== -->
   <dependencies>
+    <!-- Selenium WebDriver -->
     <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
+      <groupId>org.seleniumhq.selenium</groupId>
+      <artifactId>selenium-java</artifactId>
+      <version>${selenium.version}</version>
+      <scope>compile</scope>
+    </dependency>
+ 
+    <!-- WebDriverManager (auto-manages browser drivers) -->
+    <dependency>
+      <groupId>io.github.bonigarcia</groupId>
+      <artifactId>webdrivermanager</artifactId>
+      <version>${webdrivermanager.version}</version>
+      <scope>compile</scope>
+    </dependency>
+ 
+    <!-- TestNG (testing framework) -->
+    <dependency>
+      <groupId>org.testng</groupId>
+      <artifactId>testng</artifactId>
+      <version>${testng.version}</version>
       <scope>test</scope>
     </dependency>
-    
-    <!-- Source: https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
-<!-- Source: https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
-<dependency>
-    <groupId>org.seleniumhq.selenium</groupId>
-    <artifactId>selenium-java</artifactId>
-    <version>4.40.0</version>
-    <scope>compile</scope>
-</dependency>
- 
-<!-- Source: https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager -->
-<dependency>
-    <groupId>io.github.bonigarcia</groupId>
-    <artifactId>webdrivermanager</artifactId>
-    <version>6.3.3</version>
-    <scope>compile</scope>
-</dependency>
- 
-<!-- Source: https://mvnrepository.com/artifact/org.testng/testng -->
-<dependency>
-    <groupId>org.testng</groupId>
-    <artifactId>testng</artifactId>
-    <version>7.11.0</version>
-    <scope>test</scope>
-</dependency>
-<!-- Source: https://mvnrepository.com/artifact/org.testng/testng -->
-<dependency>
-    <groupId>org.testng</groupId>
-    <artifactId>testng</artifactId>
-    <version>7.11.0</version>
-    <scope>test</scope>
-</dependency>
- 
   </dependencies>
-</project>
  
+  <!-- ====== -->
+  <!-- Build  -->
+  <!-- ====== -->
+  <build>
+    <plugins>
+      <!-- Compile with the configured Java version -->
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.11.0</version>
+        <configuration>
+          <source>${maven.compiler.source}</source>
+          <target>${maven.compiler.target}</target>
+          <encoding>${maven.compiler.encoding}</encoding>
+        </configuration>
+      </plugin>
+ 
+      <!-- Run TestNG tests via `mvn test` -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>${maven.surefire.version}</version>
+        <configuration>
+          <!-- Surefire auto-detects TestNG when the dependency is present.
+               These options make the output cleaner and allow parallel runs if you enable them. -->
+          <includes>
+            <!-- Picks up classes like *Test.java, *Tests.java, *TestNG.java -->
+            <include>**/*Test.java</include>
+            <include>**/*Tests.java</include>
+            <include>**/*TestNG.java</include>
+          </includes>
+          <!-- If you use a suite file (testng.xml), uncomment the following:
+          <suiteXmlFiles>
+            <suiteXmlFile>testng.xml</suiteXmlFile>
+          </suiteXmlFiles>
+          -->
+          <testFailureIgnore>false</testFailureIgnore>
+          <useSystemClassLoader>true</useSystemClassLoader>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+ 
+  <!-- ============== -->
+  <!-- Distribution   -->
+  <!-- ============== -->
+  <distributionManagement>
+    <!-- Configure your company repos here if you publish artifacts; optional -->
+  </distributionManagement>
+ 
+  <!-- ============== -->
+  <!-- Repositories   -->
+  <!-- ============== -->
+  <!-- Not needed for Maven Central; add corporate repos here if required -->
+</project>
  
